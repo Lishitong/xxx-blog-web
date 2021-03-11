@@ -2,7 +2,7 @@
  * @Author: lidalan
  * @Date: 2021-03-09 15:18:19
  * @LastEditors: lidalan
- * @LastEditTime: 2021-03-09 16:13:09
+ * @LastEditTime: 2021-03-11 15:02:38
  * @Description: Header
  * @FilePath: \xxx-blog-web\src\components\Header\index.vue
 -->
@@ -23,6 +23,6 @@ export default {
 .header {
   width: 100%;
   height: 100%;
-  background-color: #20232a;
+  background-color: #fff;
 }
 </style>
