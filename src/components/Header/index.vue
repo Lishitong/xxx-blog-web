@@ -2,13 +2,15 @@
  * @Author: lidalan
  * @Date: 2021-03-09 15:18:19
  * @LastEditors: lidalan
- * @LastEditTime: 2021-03-11 15:02:38
+ * @LastEditTime: 2021-03-22 08:52:53
  * @Description: Header
  * @FilePath: \xxx-blog-web\src\components\Header\index.vue
 -->
 
 <template>
-  <header class="header"></header>
+  <header class="header">
+    <div class="xx-container">Header</div>
+  </header>
 </template>
 
 <script>

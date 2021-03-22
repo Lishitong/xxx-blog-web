@@ -6,6 +6,7 @@ import 'element-plus/lib/theme-chalk/index.css';
 import 'normalize.css'
 import 'style/index.less'
 
+console.log(ElementPlus)
 createApp(App)
 	.use(router)
 	.use(ElementPlus, { size: 'small', zIndex: 3000 })
