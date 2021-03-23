@@ -2,7 +2,7 @@
  * @Author: lidalan
  * @Date: 2021-03-09 15:18:19
  * @LastEditors: lidalan
- * @LastEditTime: 2021-03-22 16:55:16
+ * @LastEditTime: 2021-03-23 11:24:30
  * @Description: Header
  * @FilePath: \xxx-blog-web\src\components\Header\index.vue
 -->
@@ -57,6 +57,7 @@ export default {
   }
 
   .xx-search {
+    line-height: 48px;
     position: absolute;
     right: 0;
   }

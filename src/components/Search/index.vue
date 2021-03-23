@@ -2,25 +2,35 @@
  * @Author: lidalan
  * @Date: 2021-03-22 16:36:45
  * @LastEditors: lidalan
- * @LastEditTime: 2021-03-22 17:19:13
+ * @LastEditTime: 2021-03-23 15:01:56
  * @Description: 
  * @FilePath: \xxx-blog-web\src\components\Search\index.vue
 -->
 
 <template>
-  <button class="xx-serach-button" @click="handleSearch">Search</button>
+  <button class="xx-search-button" @click="handleSearch">
+    <span>Search</span>
+  </button>
   <div class="xx-header-search" v-show="search" @click.self="handleSearch">
-    <div class="xx-search">432423</div>
+    <div class="xx-search-box">
+      <div class="xx-search">
+        <i class="el-icon-search"></i>
+        <input type="text" placeholder="请输入搜索内容..." />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import { ref } from "vue";
+import { useStore } from "vuex";
 export default {
   setup() {
+    const store = useStore();
     let search = ref(false);
     let handleSearch = () => {
       search.value = !search.value;
+      store.commit("setOverflowHidden", search.value);
     };
 
     return {
@@ -43,25 +53,71 @@ export default {
   bottom: 0;
   background-color: rgba(25, 28, 34, 0.88);
 
-  .xx-search {
+  .xx-search-box {
     width: 560px;
     min-height: 205px;
     max-height: 600px;
-    background-color: #fff;
+    background-color: #fafafa;
     border-radius: 6px;
     margin: 60px auto 0;
     padding: 12px 12px 0 12px;
 
-    .xx-search-button {
-      background: #f2f2f2;
-      border: 0;
-      border-radius: 40px;
-      color: #90a4b7;
-      font-weight: 500;
-      height: 36px;
-      padding: 0 8px;
-      user-select: none;
+    .xx-search {
+      padding: 0 12px;
+      border: 2px solid #373940;
+      border-radius: 6px;
+      font-size: 19px;
+      background-color: #fff;
+      > i {
+        font-size: 24px;
+        color: #373940;
+      }
+      > input {
+        outline: none;
+        border: none;
+        height: 56px;
+        width: 470px;
+        padding-left: 8px;
+      }
     }
+  }
+}
+
+.xx-search-button {
+  background: #f2f2f2;
+  border: 1px solid transparent;
+  border-radius: 40px;
+  color: #90a4b7;
+  font-weight: 500;
+  height: 36px;
+  padding: 0 8px;
+  user-select: none;
+  outline: none;
+  width: 90px;
+  cursor: pointer;
+  position: relative;
+
+  > span {
+    line-height: 20px;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 14px;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: url(/src/assets/images/search.svg) no-repeat center;
+    background-size: contain;
+    width: 26px;
+    height: 26px;
+  }
+
+  &:hover {
+    border: 1px solid #373940;
   }
 }
 </style>

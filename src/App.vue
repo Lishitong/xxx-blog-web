@@ -13,16 +13,30 @@
 import HeaderTemplate from "components/Header/index.vue";
 import FooterTemplate from "components/Footer/index.vue";
 import MainTemplate from "components/Main/index.vue";
+import { useStore } from "vuex";
+import { computed, watch } from "vue";
 export default {
   components: {
     HeaderTemplate,
     MainTemplate,
     FooterTemplate,
   },
-  setup() {},
+  setup() {
+    const store = useStore();
+    let overflowHidden = computed(() => store.state.overflowHidden);
+    watch(overflowHidden, (n, o) => {
+      if (n) {
+        document.body.className += " hidden";
+      } else {
+        document.body.className = "";
+      }
+      console.log(document.body.getAttribute('class'))
+    });
+    return {};
+  },
 };
 </script>
-<style>
+<style lang="less">
 html,
 body,
 #app {
@@ -32,6 +46,11 @@ body {
   padding-top: 60px;
   height: calc(100% - 60px);
   background-color: #fff;
+  font-size: 12px;
+
+  &.hidden {
+    overflow: hidden;
+  }
 }
 
 .xx-container {
@@ -81,5 +100,12 @@ body {
   padding: 28px 0;
   height: 56px;
   line-height: 20px;
+}
+
+a:hover,
+a:active,
+a:link,
+a:visited {
+  color: inherit;
 }
 </style>
