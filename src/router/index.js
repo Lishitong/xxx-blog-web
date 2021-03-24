@@ -2,7 +2,7 @@
  * @Author: lidalan
  * @Date: 2021-03-08 16:08:05
  * @LastEditors: lidalan
- * @LastEditTime: 2021-03-22 15:57:46
+ * @LastEditTime: 2021-03-24 16:50:46
  * @Description: router
  * @FilePath: \xxx-blog-web\src\router\index.js
  */
@@ -35,7 +35,6 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-	console.log(to, from);
 	store.commit('setActiveRouter', to.path);
 	next();
 });

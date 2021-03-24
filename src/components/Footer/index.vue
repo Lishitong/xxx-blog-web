@@ -2,7 +2,7 @@
  * @Author: lidalan
  * @Date: 2021-03-09 15:34:40
  * @LastEditors: lidalan
- * @LastEditTime: 2021-03-22 10:09:56
+ * @LastEditTime: 2021-03-24 16:14:35
  * @Description: Footer
  * @FilePath: \xxx-blog-web\src\components\Footer\index.vue
 -->
@@ -49,12 +49,15 @@
 
 <script>
 import { ref } from "vue";
+import { useStore } from "vuex";
 export default {
   setup() {
+    const store = useStore();
     let alertWX = ref(false);
     let weixin = ref("/src/assets/images/weixin430.jpg");
     let handleWXShare = () => {
       alertWX.value = !alertWX.value;
+      store.commit("setOverflowHidden", alertWX.value);
     };
     return {
       weixin,

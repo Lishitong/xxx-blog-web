@@ -14,7 +14,7 @@ import HeaderTemplate from "components/Header/index.vue";
 import FooterTemplate from "components/Footer/index.vue";
 import MainTemplate from "components/Main/index.vue";
 import { useStore } from "vuex";
-import { computed, watch } from "vue";
+import { computed, watch, inject } from "vue";
 export default {
   components: {
     HeaderTemplate,
@@ -23,14 +23,14 @@ export default {
   },
   setup() {
     const store = useStore();
+    const { addClass, removeClass } = inject("className");
     let overflowHidden = computed(() => store.state.overflowHidden);
-    watch(overflowHidden, (n, o) => {
+    watch(overflowHidden, (n) => {
       if (n) {
-        document.body.className += " hidden";
+        addClass(document.body, "hidden");
       } else {
-        document.body.className = "";
+        removeClass(document.body, "hidden");
       }
-      console.log(document.body.getAttribute('class'))
     });
     return {};
   },

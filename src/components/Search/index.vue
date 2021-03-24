@@ -2,7 +2,7 @@
  * @Author: lidalan
  * @Date: 2021-03-22 16:36:45
  * @LastEditors: lidalan
- * @LastEditTime: 2021-03-23 15:01:56
+ * @LastEditTime: 2021-03-24 16:46:22
  * @Description: 
  * @FilePath: \xxx-blog-web\src\components\Search\index.vue
 -->
@@ -16,6 +16,11 @@
       <div class="xx-search">
         <i class="el-icon-search"></i>
         <input type="text" placeholder="请输入搜索内容..." />
+      </div>
+      <div class="xx-search-dropdown">
+        <div class="xx-search-start">
+          <p class="xx-search-help">No recent searches</p>
+        </div>
       </div>
     </div>
   </div>
@@ -78,6 +83,23 @@ export default {
         height: 56px;
         width: 470px;
         padding-left: 8px;
+      }
+    }
+
+    .xx-search-dropdown {
+      .xx-search-start {
+        font-size: 0.9em;
+        margin: 0 auto;
+        padding: 36px 0;
+        text-align: center;
+        width: 80%;
+      }
+
+      .xx-search-help {
+        font-size: 0.9em;
+        margin: 0;
+        user-select: none;
+        color: #969faf;
       }
     }
   }
