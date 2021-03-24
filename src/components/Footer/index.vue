@@ -2,7 +2,7 @@
  * @Author: lidalan
  * @Date: 2021-03-09 15:34:40
  * @LastEditors: lidalan
- * @LastEditTime: 2021-03-24 16:14:35
+ * @LastEditTime: 2021-03-24 17:33:34
  * @Description: Footer
  * @FilePath: \xxx-blog-web\src\components\Footer\index.vue
 -->
@@ -10,6 +10,7 @@
 <template>
   <div class="xx-container">
     <div class="xx-footer-box">
+      <p class="xx-footer-copyright">© 2020 - {{ curYear }} MuzLi 版权所有</p>
       <p class="xx-footer-beian">
         <a
           href="http://beian.miit.gov.cn/publish/query/indexFirst.action"
@@ -17,7 +18,7 @@
           >网站备案/许可证号: 豫ICP备20021192号-1</a
         >
       </p>
-      <!-- <p>
+      <p v-if="false">
         <a
           href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode="
           target="_blank"
@@ -28,7 +29,8 @@
           />
           <b>豫公网安备:</b>
         </a>
-      </p> -->
+      </p>
+      <p class="xx-footer-work">前端开发工程师 —— 德邦快递</p>
     </div>
     <div class="xx-footer-share">
       <a
@@ -53,6 +55,7 @@ import { useStore } from "vuex";
 export default {
   setup() {
     const store = useStore();
+    const curYear = new Date().getFullYear();
     let alertWX = ref(false);
     let weixin = ref("/src/assets/images/weixin430.jpg");
     let handleWXShare = () => {
@@ -63,6 +66,7 @@ export default {
       weixin,
       alertWX,
       handleWXShare,
+      curYear,
     };
   },
 };
@@ -73,9 +77,24 @@ export default {
   position: absolute;
   left: 0;
 
+  > p {
+    margin-bottom: 8px;
+    font-size: 12px;
+    line-height: 12px;
+  }
+
+  .xx-footer-copyright {
+    font-family: Helvetica;
+    color: #fff;
+  }
+
   .xx-footer-beian {
     font-weight: 400;
     color: #3f7ee0;
+  }
+  .xx-footer-work {
+    color: #d1d2d4;
+    font-weight: 300;
   }
 }
 
