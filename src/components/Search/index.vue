@@ -2,7 +2,7 @@
  * @Author: lidalan
  * @Date: 2021-03-22 16:36:45
  * @LastEditors: lidalan
- * @LastEditTime: 2021-03-24 16:46:22
+ * @LastEditTime: 2021-03-25 10:40:41
  * @Description: 
  * @FilePath: \xxx-blog-web\src\components\Search\index.vue
 -->
@@ -18,10 +18,19 @@
         <input type="text" placeholder="请输入搜索内容..." />
       </div>
       <div class="xx-search-dropdown">
-        <div class="xx-search-start">
+        <div class="xx-search-start" v-if="!searchResult.length">
           <p class="xx-search-help">No recent searches</p>
         </div>
+        <div v-else class="xx-search-container">
+          <SearchContainerTemplate
+            v-for="(item, index) in searchResult"
+            :key="index"
+            :source="item"
+            :handleSearch="handleSearch"
+          />
+        </div>
       </div>
+      <div class="xx-search-footer">Tooltip: Click the blank area to close</div>
     </div>
   </div>
 </template>
@@ -29,9 +38,14 @@
 <script>
 import { ref } from "vue";
 import { useStore } from "vuex";
+import SearchContainerTemplate from "components/SearchContainer/index.vue";
 export default {
+  components: {
+    SearchContainerTemplate,
+  },
   setup() {
     const store = useStore();
+    let searchResult = ref([]);
     let search = ref(false);
     let handleSearch = () => {
       search.value = !search.value;
@@ -40,6 +54,7 @@ export default {
 
     return {
       search,
+      searchResult,
       handleSearch,
     };
   },
@@ -62,7 +77,7 @@ export default {
     width: 560px;
     min-height: 205px;
     max-height: 600px;
-    background-color: #fafafa;
+    background-color: #f5f6f7;
     border-radius: 6px;
     margin: 60px auto 0;
     padding: 12px 12px 0 12px;
@@ -141,5 +156,16 @@ export default {
   &:hover {
     border: 1px solid #373940;
   }
+}
+
+.xx-search-container {
+  max-height: 488px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.xx-search-footer {
+  color: #969faf;
+  text-align: right;
 }
 </style>
