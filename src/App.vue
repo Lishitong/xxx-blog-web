@@ -25,6 +25,7 @@ export default {
     const store = useStore();
     const { addClass, removeClass } = inject("className");
     let overflowHidden = computed(() => store.state.overflowHidden);
+
     watch(overflowHidden, (n) => {
       if (n) {
         addClass(document.body, "hidden");
@@ -54,7 +55,7 @@ body {
 }
 
 .xx-container {
-  width: 1220px;
+  width: 1280px;
   margin-left: auto;
   margin-right: auto;
   position: relative;

@@ -2,7 +2,7 @@
  * @Author: lidalan
  * @Date: 2021-03-09 15:34:40
  * @LastEditors: lidalan
- * @LastEditTime: 2021-03-24 17:33:34
+ * @LastEditTime: 2021-04-19 14:12:36
  * @Description: Footer
  * @FilePath: \xxx-blog-web\src\components\Footer\index.vue
 -->
@@ -30,7 +30,7 @@
           <b>豫公网安备:</b>
         </a>
       </p>
-      <p class="xx-footer-work">前端开发工程师 —— 德邦快递</p>
+      <p class="xx-footer-work">前端开发工程师</p>
     </div>
     <div class="xx-footer-share">
       <a
