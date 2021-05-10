@@ -2,7 +2,7 @@
  * @Author: lidalan
  * @Date: 2021-03-09 15:18:19
  * @LastEditors: lidalan
- * @LastEditTime: 2021-03-23 11:24:30
+ * @LastEditTime: 2021-05-07 15:07:05
  * @Description: Header
  * @FilePath: \xxx-blog-web\src\components\Header\index.vue
 -->
@@ -10,7 +10,7 @@
 <template>
   <header class="header">
     <div class="xx-container">
-      <a href="/" class="xx-logo"><h1>Muz的IT生活</h1></a>
+      <router-link to='/' class="xx-logo"><h1>Muz的IT生活</h1></router-link>
       <MenusTemplate class="xx-menus" />
       <div class="xx-search">
         <SearchTemplate />

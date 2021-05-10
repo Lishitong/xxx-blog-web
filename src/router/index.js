@@ -2,7 +2,7 @@
  * @Author: lidalan
  * @Date: 2021-03-08 16:08:05
  * @LastEditors: lidalan
- * @LastEditTime: 2021-03-24 16:50:46
+ * @LastEditTime: 2021-05-10 16:56:58
  * @Description: router
  * @FilePath: \xxx-blog-web\src\router\index.js
  */
@@ -16,6 +16,10 @@ let routes = [
 		component: () => import('src/view/Home/index.vue'),
 	},
 	{
+		path: '/article',
+		component: () => import('src/view/Article/index.vue'),
+	},
+	{
 		path: '/code',
 		component: () => import('src/view/Code/index.vue'),
 	},
@@ -24,7 +28,19 @@ let routes = [
 		component: () => import('src/view/Daily/index.vue'),
 	},
 	{
-		path: '/:notfound',
+		path: '/article/:id',
+		component: () => import('src/view/Article/details.vue'),
+	},
+	{
+		path: '/code/:type',
+		component: () => import('src/view/Code/types.vue'),
+	},
+	{
+		path: '/code/:type/:id',
+		component: () => import('src/view/Code/details.vue'),
+	},
+	{
+		path: '/:notfound(.*)?',
 		component: () => import('src/view/Not/index.vue'),
 	},
 ];
@@ -32,6 +48,7 @@ let routes = [
 const router = createRouter({
 	history: createWebHistory(),
 	routes,
+	scrollBehavior: (to, from, savedPosition) => ({ top: 0 }),
 });
 
 router.beforeEach((to, from, next) => {

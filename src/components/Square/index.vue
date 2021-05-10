@@ -2,19 +2,20 @@
  * @Author: lidalan
  * @Date: 2021-05-06 10:39:52
  * @LastEditors: lidalan
- * @LastEditTime: 2021-05-06 15:42:29
+ * @LastEditTime: 2021-05-07 15:17:59
  * @Description: 
  * @FilePath: \xxx-blog-web\src\components\Square\index.vue
 -->
 
 <template>
-  <div>
+  <div class="square-warp" @click="handleRouterPush(item.path)">
     <img :src="item.imgUrl" alt="" />
     <p>{{ item.name }}</p>
   </div>
 </template>
 
 <script>
+import { useRouter } from "vue-router";
 export default {
   props: {
     item: {
@@ -22,7 +23,13 @@ export default {
     },
   },
   setup(props) {
-    console.log(props);
+    const router = useRouter();
+    const handleRouterPush = (path) => {
+      router.push(path);
+    };
+    return {
+      handleRouterPush,
+    };
   },
 };
 </script>

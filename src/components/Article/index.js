@@ -1,1 +1,2 @@
-export { default as ArticleWarpTemplate } from './warp.vue';
+export { default as ArticleWarpTemplate } from './wrap.vue';
+export { default as ArticleWarpExtendTemplate } from './wrapextend.vue';

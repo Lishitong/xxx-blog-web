@@ -2,7 +2,7 @@
  * @Author: lidalan
  * @Date: 2021-03-22 16:36:45
  * @LastEditors: lidalan
- * @LastEditTime: 2021-03-25 10:40:41
+ * @LastEditTime: 2021-05-10 17:09:17
  * @Description: 
  * @FilePath: \xxx-blog-web\src\components\Search\index.vue
 -->
@@ -15,7 +15,11 @@
     <div class="xx-search-box">
       <div class="xx-search">
         <i class="el-icon-search"></i>
-        <input type="text" placeholder="请输入搜索内容..." />
+        <input
+          type="text"
+          placeholder="请输入搜索内容..."
+          v-model="searchContent"
+        />
       </div>
       <div class="xx-search-dropdown">
         <div class="xx-search-start" v-if="!searchResult.length">
@@ -47,13 +51,16 @@ export default {
     const store = useStore();
     let searchResult = ref([]);
     let search = ref(false);
+    let searchContent = ref("");
     let handleSearch = () => {
       search.value = !search.value;
+      if (!search.value) searchContent.value = "";
       store.commit("setOverflowHidden", search.value);
     };
 
     return {
       search,
+      searchContent,
       searchResult,
       handleSearch,
     };

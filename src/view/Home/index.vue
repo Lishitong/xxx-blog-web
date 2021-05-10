@@ -2,7 +2,7 @@
  * @Author: lidalan
  * @Date: 2021-03-08 16:41:17
  * @LastEditors: lidalan
- * @LastEditTime: 2021-05-06 17:15:55
+ * @LastEditTime: 2021-05-10 09:54:34
  * @Description: Home
  * @FilePath: \xxx-blog-web\src\view\Home\index.vue
 -->
@@ -13,13 +13,22 @@
     </div>
     <div class="home-square" v-if="Square.length >= 9">
       <SquareTemplate
-        :item="{ id: new Date().getTime(), name: '更多', imgUrl: testImg }"
+        :item="{
+          id: new Date().getTime(),
+          name: '更多',
+          imgUrl: testImg,
+          path: '/code',
+        }"
       />
     </div>
   </div>
   <el-card class="home-bottom" shadow="never">
     <div class="bottom-content">
-      <ArticleWarpTemplate />
+      <ArticleWarpTemplate
+        v-for="item in articleWarp"
+        :key="item.id"
+        :data="item"
+      />
     </div>
   </el-card>
 </template>
@@ -33,12 +42,33 @@ export default {
   components: { SquareTemplate, ArticleWarpTemplate },
   setup() {
     const test = [];
+    const articleWarp = [];
     let i = 0;
     while (i < 10) {
       test.push({
         id: i,
         name: "test" + i,
         imgUrl: testImg,
+        path: "/code/test" + i,
+      });
+      let j = 0;
+      let childNodes = [];
+      let random = Math.floor(Math.random() * 10);
+      while (j < random) {
+        let id = Math.floor(Math.random() * 10000);
+        childNodes.push({
+          id,
+          time: "05." + (10 + j),
+          title: "大幅减少了关键时刻vds" + Math.random(),
+          path: "/article/" + id,
+        });
+        j++;
+      }
+      articleWarp.push({
+        id: i,
+        year: 2021 - i,
+        childNodes,
+        childLength: childNodes.length,
       });
       i++;
     }
@@ -48,7 +78,7 @@ export default {
     } else {
       Square = ref(test);
     }
-    return { Square, testImg };
+    return { Square, testImg, articleWarp };
   },
 };
 </script>
@@ -61,10 +91,10 @@ export default {
   margin-bottom: 20px;
 
   .home-square {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     text-align: center;
-    line-height: 120px;
+    line-height: 100px;
     background: black;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -77,11 +107,6 @@ export default {
       transform: scale(1.1);
       cursor: pointer;
     }
-  }
-}
-.home-bottom {
-  .bottom-content {
-    height: 200px;
   }
 }
 </style>

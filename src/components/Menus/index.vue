@@ -2,7 +2,7 @@
  * @Author: lidalan
  * @Date: 2021-03-22 10:58:15
  * @LastEditors: lidalan
- * @LastEditTime: 2021-03-22 15:39:00
+ * @LastEditTime: 2021-05-07 15:05:47
  * @Description: 
  * @FilePath: \xxx-blog-web\src\components\Menus\index.vue
 -->
@@ -27,8 +27,8 @@ export default {
     // const activeRouter = computed(() => route.path);
     const Menus = ref([
       {
-        name: "首页",
-        path: "/",
+        name: "文章",
+        path: "/article",
       },
       {
         name: "代码",
