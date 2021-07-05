@@ -7,6 +7,7 @@ import ClassName from './plugins/className';
 import 'normalize.css';
 import 'element-plus/lib/theme-chalk/index.css';
 import 'style/index.less';
+import './utils/flexible'
 const app = createApp(App)
 	.use(store)
 	.use(router)

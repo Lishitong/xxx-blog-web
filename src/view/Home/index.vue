@@ -11,7 +11,7 @@
     <div v-for="item in Square" :key="item.id" class="home-square">
       <SquareTemplate :item="item" />
     </div>
-    <div class="home-square" v-if="Square.length >= 9">
+    <div class="home-square" v-if="Square.length >= 8">
       <SquareTemplate
         :item="{
           id: new Date().getTime(),
@@ -74,7 +74,7 @@ export default {
     }
     let Square = null;
     if (test.length >= 10) {
-      Square = ref(test.slice(0, 9));
+      Square = ref(test.slice(0, 8));
     } else {
       Square = ref(test);
     }

@@ -55,7 +55,7 @@ body {
 }
 
 .xx-container {
-  width: 1280px;
+  max-width: 960px;
   margin-left: auto;
   margin-right: auto;
   position: relative;

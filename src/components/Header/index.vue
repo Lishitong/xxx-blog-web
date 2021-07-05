@@ -57,9 +57,11 @@ export default {
   }
 
   .xx-search {
-    line-height: 48px;
+    line-height: 36px;
+    height: 36px;
     position: absolute;
     right: 0;
+    top: 12px;
   }
 }
 </style>
